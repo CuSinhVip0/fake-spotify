@@ -1,11 +1,11 @@
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
-function Header() {
+function Header({ isSearchBar }) {
     const clientId = '616f7042b2de43f18af7a77511c94cb5';
     const params = new URLSearchParams(window.location.search);
     const code = params.get('code');
@@ -84,7 +84,14 @@ function Header() {
                 <span>
                     <FontAwesomeIcon icon={faChevronRight} />
                 </span>
+                {isSearchBar && (
+                    <div className={cx('container_input')}>
+                        <input type="text" className={cx('searchbar')} placeholder="Bạn muốn nghe gì?"></input>
+                        <FontAwesomeIcon className={cx('icon_search')} icon={faSearch}></FontAwesomeIcon>
+                    </div>
+                )}
             </div>
+
             <div className={cx('options')}>
                 <div className={cx('services')}>
                     <ul>

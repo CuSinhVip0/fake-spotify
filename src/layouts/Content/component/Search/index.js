@@ -15,9 +15,9 @@ function Search() {
         return (
             <React.Fragment>
                 {data.length > 0 &&
-                    data.map((item) => {
+                    data.map((item, index) => {
                         return (
-                            <div className={cx('content')}>
+                            <div className={cx('content')} key={index}>
                                 <img
                                     alt="pic"
                                     className={cx('image')}
@@ -33,7 +33,7 @@ function Search() {
     useEffect(() => {
         const fetchGenres = async () => {
             const resuilt = await axios.get(
-                'https://api.spotify.com/v1/browse/categories?country=VN&offset=0&limit=20',
+                'https://api.spotify.com/v1/browse/categories?country=VN&offset=0&limit=40',
                 {
                     headers: {
                         Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
@@ -47,7 +47,7 @@ function Search() {
 
     return (
         <React.Fragment>
-            <Header></Header>
+            <Header isSearchBar={true}></Header>
             <div className={cx('wrapper')}>
                 <p className={cx('title')}>Duyệt tìm tất cả</p>
                 <div className={cx('genres')}>{renderGenres(genres)}</div>

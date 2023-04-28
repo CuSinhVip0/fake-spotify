@@ -15,20 +15,23 @@
 }
 
 .content {
-    display: flex;
     position: relative;
+
+    margin-bottom: 24px;
+
     & .name {
         position: absolute;
-        top: 0;
+        top: 50%;
         left: 0;
         right: 0;
         padding: 16px;
-        font-size: 2.4rem;
+        font-size: 2rem;
+        text-align: center;
     }
 
     & .image {
-        width: 181px;
-        height: 181px;
+        width: 180px;
+        height: 180px;
         border-radius: 15px;
     }
 }

@@ -13,6 +13,8 @@
 }
 
 .controls {
+    display: flex;
+    align-items: center;
     & span {
         background-color: rgba(0, 0, 0, 0.741);
         display: inline-flex;
@@ -24,12 +26,34 @@
     }
 
     & span + span {
-        margin-left: 24px;
+        margin-left: 16px;
     }
     & svg {
         height: 2rem;
         width: 2rem;
         color: var(--color-blur);
+    }
+
+    & .container_input {
+        margin-left: 16px;
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        & .searchbar {
+            width: 300px;
+            padding: 12px 24px 12px 40px;
+            outline: none;
+            border-radius: 24px;
+            border: none;
+
+            font-size: 1.3rem;
+        }
+
+        & .icon_search {
+            position: absolute;
+            left: 12px;
+        }
     }
 }
 
