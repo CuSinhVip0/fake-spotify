@@ -1,0 +1,34 @@
+.wrapper {
+    margin-top: 64px;
+    padding: 32px 32px;
+    width: 100%;
+}
+.title {
+    font-size: 2.4rem;
+}
+
+.genres {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.content {
+    display: flex;
+    position: relative;
+    & .name {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 16px;
+        font-size: 2.4rem;
+    }
+
+    & .image {
+        width: 181px;
+        height: 181px;
+        border-radius: 15px;
+    }
+}

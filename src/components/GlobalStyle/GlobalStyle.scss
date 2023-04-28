@@ -1,0 +1,51 @@
+@import 'normalize.css';
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    //root
+    --nav: #000;
+    --color-white: #fff;
+    --color-blur: #b3b3b3;
+    --color-black: #000;
+
+    background-color: rgb(26, 25, 25);
+    font-family: 'CircularSpBold';
+    color: var(--color-white);
+    font-size: 1.6rem;
+    line-height: 1.5;
+    width: 100%;
+}
+
+ul li {
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-white);
+}
+
+.wrapper {
+    display: flex;
+}
+
+//font format
+@font-face {
+    font-family: CircularSpBold;
+    src: url('/assets/fonts/CircularSp-Bold-fe1cfc14b7498b187c78fa72fb72d148.woff2');
+}
+//font format
+@font-face {
+    font-family: CircularSp;
+    src: url('/assets/fonts/CircularSp-Book-4eaffdf96f4c6f984686e93d5d9cb325.woff2');
+}

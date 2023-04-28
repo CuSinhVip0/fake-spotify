@@ -1,0 +1,74 @@
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+    padding: 0px 32px;
+    position: fixed;
+    left: 241px;
+    right: 0;
+    top: 0;
+    background-color: rgb(26, 25, 25);
+    z-index: 5;
+}
+
+.controls {
+    & span {
+        background-color: rgba(0, 0, 0, 0.741);
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+
+    & span + span {
+        margin-left: 24px;
+    }
+    & svg {
+        height: 2rem;
+        width: 2rem;
+        color: var(--color-blur);
+    }
+}
+
+.options {
+    display: flex;
+    align-items: center;
+
+    & li {
+        display: inline-block;
+        padding: 0px 12px;
+    }
+
+    & p {
+        color: var(--color-blur);
+    }
+
+    & li:hover p {
+        color: var(--color-white);
+    }
+
+    & li:hover {
+        transform: scale(1.1);
+    }
+    & .services {
+        padding-right: 20px;
+        border-right: 1px solid var(--color-blur);
+        display: flex;
+        align-items: center;
+    }
+    & .auth {
+        padding-left: 20px;
+        display: flex;
+        align-items: center;
+
+        & .fakebtn {
+            padding: 12px 24px;
+            border-radius: 24px;
+            background-color: var(--color-white);
+            color: var(--color-black);
+        }
+    }
+}

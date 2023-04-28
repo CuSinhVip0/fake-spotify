@@ -1,0 +1,45 @@
+.wrapper {
+    width: 241px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background-color: var(--nav);
+}
+
+.logo {
+    padding: 24px;
+}
+
+.playlists,
+.menu {
+    padding: 0px 24px;
+
+    & li {
+        padding: 8px 0px;
+    }
+
+    & .link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        font-size: 1.4rem;
+        color: var(--color-blur);
+
+        & svg {
+            height: 2.2rem;
+        }
+
+        & span {
+            min-width: 40px;
+        }
+    }
+
+    & .link:hover {
+        color: var(--color-white);
+    }
+}
+
+//playlist
+.playlists {
+    margin-top: 16px;
+}
