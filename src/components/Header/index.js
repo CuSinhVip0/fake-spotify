@@ -1,11 +1,12 @@
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight, faSearch, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { NavLink } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
-function Header({ isSearchBar }) {
+function Header({ isSearchBar = false, isLibraryBar = false }) {
     const clientId = '616f7042b2de43f18af7a77511c94cb5';
     const params = new URLSearchParams(window.location.search);
     const code = params.get('code');
@@ -73,6 +74,7 @@ function Header({ isSearchBar }) {
                 sessionStorage.setItem('accessToken', await getAccessToken(clientId, code));
         }
     };
+
     sessionStorage.getItem('accessToken') || token();
 
     return (
@@ -86,8 +88,61 @@ function Header({ isSearchBar }) {
                 </span>
                 {isSearchBar && (
                     <div className={cx('container_input')}>
-                        <input type="text" className={cx('searchbar')} placeholder="Bạn muốn nghe gì?"></input>
+                        <input
+                            id="inputSearch"
+                            type="text"
+                            className={cx('searchbar')}
+                            placeholder="Bạn muốn nghe gì?"
+                            onChange={(e) => {
+                                if (e.target.value) document.querySelector('#icon').style.display = 'block';
+                                else document.querySelector('#icon').style.display = 'none';
+                            }}
+                        ></input>
                         <FontAwesomeIcon className={cx('icon_search')} icon={faSearch}></FontAwesomeIcon>
+                        <FontAwesomeIcon
+                            id="icon"
+                            className={cx('icon_delete')}
+                            icon={faXmark}
+                            onClick={() => {
+                                document.querySelector('#inputSearch').value = '';
+                                document.querySelector('#icon').style.display = 'none';
+                            }}
+                        ></FontAwesomeIcon>
+                    </div>
+                )}
+                {isLibraryBar && (
+                    <div className={cx('container_options')}>
+                        <NavLink
+                            id="playlists"
+                            className={({ isActive }) => (isActive ? cx('link', 'focus') : cx('link'))}
+                            to={'/library/Playlists'}
+                        >
+                            Playlist
+                        </NavLink>
+
+                        <NavLink
+                            id="podcast"
+                            className={({ isActive }) => (isActive ? cx('link', 'focus') : cx('link'))}
+                            to={'/library/Podcast'}
+                        >
+                            Podcast
+                        </NavLink>
+
+                        <NavLink
+                            id="artist"
+                            className={({ isActive }) => (isActive ? cx('link', 'focus') : cx('link'))}
+                            to={'/library/Artist'}
+                        >
+                            Artists
+                        </NavLink>
+
+                        <NavLink
+                            id="album"
+                            className={({ isActive }) => (isActive ? cx('link', 'focus') : cx('link'))}
+                            to={'/library/Album'}
+                        >
+                            Album
+                        </NavLink>
                     </div>
                 )}
             </div>

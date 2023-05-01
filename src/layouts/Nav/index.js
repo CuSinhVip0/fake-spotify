@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './Nav.module.scss';
 import images from '~/assets/images';
@@ -17,28 +17,34 @@ function Nav() {
             <div className={cx('menu')}>
                 <ul>
                     <li>
-                        <Link className={cx('link')} to="/">
+                        <NavLink className={({ isActive }) => (isActive ? cx('activeNav', 'link') : cx('link'))} to="/">
                             <span>
                                 <FontAwesomeIcon icon={faHouse} />
                             </span>
                             Home
-                        </Link>
+                        </NavLink>
                     </li>
                     <li>
-                        <Link className={cx('link')} to="/search">
+                        <NavLink
+                            className={({ isActive }) => (isActive ? cx('activeNav', 'link') : cx('link'))}
+                            to="/search"
+                        >
                             <span>
                                 <FontAwesomeIcon icon={faSearch} />
                             </span>
                             Search
-                        </Link>
+                        </NavLink>
                     </li>
                     <li>
-                        <Link className={cx('link')} to="/library">
+                        <NavLink
+                            className={({ isActive }) => (isActive ? cx('activeNav', 'link') : cx('link'))}
+                            to="/library"
+                        >
                             <span>
                                 <FontAwesomeIcon icon={faBook} />
                             </span>
                             Library
-                        </Link>
+                        </NavLink>
                     </li>
                 </ul>
             </div>

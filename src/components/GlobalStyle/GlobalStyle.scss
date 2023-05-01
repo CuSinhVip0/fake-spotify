@@ -49,3 +49,14 @@ a {
     font-family: CircularSp;
     src: url('/assets/fonts/CircularSp-Book-4eaffdf96f4c6f984686e93d5d9cb325.woff2');
 }
+
+//handle
+
+.focus {
+    background-color: #333;
+    border-radius: 10px;
+}
+
+.activeNav {
+    color: var(--color-white) !important;
+}
