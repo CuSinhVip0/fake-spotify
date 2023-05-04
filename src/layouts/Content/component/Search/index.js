@@ -3,6 +3,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
+import { Link } from 'react-router-dom';
 
 import Header from '~/components/Header';
 
@@ -17,14 +18,16 @@ function Search() {
                 {data.length > 0 &&
                     data.map((item, index) => {
                         return (
-                            <div className={cx('content')} key={index}>
-                                <img
-                                    alt="pic"
-                                    className={cx('image')}
-                                    src={data.length > 0 ? item.icons[0].url : null}
-                                ></img>
-                                <p className={cx('name')}>{data.length > 0 ? item.name : null}</p>
-                            </div>
+                            <Link to="/categories" state={{ from: item }} key={index}>
+                                <div className={cx('content')}>
+                                    <img
+                                        alt="pic"
+                                        className={cx('image')}
+                                        src={data.length > 0 ? item.icons[0].url : null}
+                                    ></img>
+                                    <p className={cx('name')}>{data.length > 0 ? item.name : null}</p>
+                                </div>
+                            </Link>
                         );
                     })}
             </React.Fragment>
@@ -48,6 +51,7 @@ function Search() {
     return (
         <React.Fragment>
             <Header isSearchBar={true}></Header>
+
             <div className={cx('wrapper')}>
                 <p className={cx('title')}>Duyệt tìm tất cả</p>
                 <div className={cx('genres')}>{renderGenres(genres)}</div>

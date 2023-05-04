@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from '~/components/Header';
 
-function Artist() {
+function MyAlbum() {
     return (
         <React.Fragment>
             <Header isLibraryBar={true}></Header>
-            <p>Artists</p>
+            <p>Album</p>
         </React.Fragment>
     );
 }
 
-export default Artist;
+export default MyAlbum;

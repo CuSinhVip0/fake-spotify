@@ -1,0 +1,41 @@
+.wrapper {
+    margin-top: 64px;
+    padding: 0 32px;
+}
+
+.banner {
+    display: flex;
+    flex-direction: row;
+
+    padding: 32px 0;
+}
+
+.image {
+    width: 232px;
+    height: 232px;
+    margin-right: 32px;
+}
+
+.content {
+    display: block;
+    width: 100%;
+}
+
+.categories {
+    font-size: 1.4rem;
+    text-transform: capitalize;
+}
+
+.name {
+    font-size: 9.6rem;
+    font-weight: normal;
+    letter-spacing: -3px;
+}
+
+.discription {
+    font-size: 1.4rem;
+    color: #ffffffb3;
+}
+
+.songs {
+}

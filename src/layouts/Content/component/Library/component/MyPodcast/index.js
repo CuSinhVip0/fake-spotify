@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from '~/components/Header';
 
-function Album() {
+function MyPodcast() {
     return (
         <React.Fragment>
             <Header isLibraryBar={true}></Header>
-            <p>Album</p>
+            <p>Podcast</p>
         </React.Fragment>
     );
 }
 
-export default Album;
+export default MyPodcast;

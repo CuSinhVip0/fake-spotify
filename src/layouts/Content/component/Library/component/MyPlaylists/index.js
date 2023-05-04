@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from '~/components/Header';
 
-function Podcast() {
+function MyPlaylists() {
     return (
         <React.Fragment>
             <Header isLibraryBar={true}></Header>
-            <p>Podcast</p>
+            <p>Playlists</p>
         </React.Fragment>
     );
 }
 
-export default Podcast;
+export default MyPlaylists;
