@@ -37,5 +37,98 @@
     color: #ffffffb3;
 }
 
+.controls {
+    display: inline-flex;
+    align-items: center;
+    margin: 20px 0;
+
+    & .icon:first-child {
+        font-size: 56px;
+        color: #1ed760;
+    }
+
+    & .icon:first-child:hover {
+        transform: scale(1.1);
+    }
+
+    & .icon:not(.icon:first-child):hover {
+        color: #fff;
+    }
+
+    & .icon:last-child {
+        font-size: 24px;
+        color: #b3b3b3;
+        margin-left: 20px;
+    }
+    & .icon:nth-child(2) {
+        font-size: 30px;
+        color: #b3b3b3;
+        margin-left: 20px;
+    }
+}
+
 .songs {
+    width: 100%;
+    font-family: 'CircularSp';
+
+    & .genre {
+        display: inline-flex;
+        font-size: 1.5rem;
+        color: #b3b3b3;
+        width: 100%;
+        border-bottom: 1px solid #b3b3b3;
+        margin-bottom: 20px;
+    }
+
+    & .col1 {
+        flex-basis: 3%;
+        text-align: center;
+    }
+    & .col2 {
+        flex-basis: 40%;
+    }
+    & .col3 {
+        flex-basis: 27%;
+    }
+    & .col4 {
+        flex-basis: 25%;
+    }
+    & .col5 {
+        flex-basis: 5%;
+    }
+
+    & .song {
+        display: inline-flex;
+        align-items: center;
+        width: 100%;
+        color: #b3b3b3;
+        font-size: 1.5rem;
+        padding: 6px 0;
+
+        & .title {
+            display: inline-flex;
+            align-items: center;
+
+            & .title-image {
+                width: 40px;
+                height: 40px;
+                margin-right: 20px;
+            }
+
+            & .title-about {
+                & .about-name {
+                    font-size: 1.6rem;
+                    color: #fff;
+                }
+                & .about-artist {
+                    font-size: 1.4rem;
+                }
+            }
+        }
+    }
+
+    & .song:hover {
+        background-color: #ffffff1a;
+        border-radius: 10px;
+    }
 }
