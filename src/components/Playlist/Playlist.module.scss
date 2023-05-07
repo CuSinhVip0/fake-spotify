@@ -6,7 +6,6 @@
 .banner {
     display: flex;
     flex-direction: row;
-
     padding: 32px 0;
 }
 
@@ -119,6 +118,10 @@
                 & .about-name {
                     font-size: 1.6rem;
                     color: #fff;
+                }
+
+                & .about-name:hover {
+                    text-decoration: underline;
                 }
                 & .about-artist {
                     font-size: 1.4rem;

@@ -1,0 +1,125 @@
+.wrapper {
+    margin-top: 64px;
+    padding: 0 32px;
+}
+
+.banner {
+    display: flex;
+    flex-direction: row;
+    height: 340px;
+    padding: 32px 0;
+    align-items: flex-end;
+}
+
+.image {
+    width: 232px;
+    height: 232px;
+    margin-right: 32px;
+}
+
+.content {
+    display: block;
+    width: 100%;
+}
+
+.categories {
+    font-size: 1.4rem;
+    text-transform: capitalize;
+}
+
+.name {
+    line-height: 1;
+    font-size: 9.6rem;
+    font-weight: normal;
+    letter-spacing: -3px;
+    margin: 20px 0px;
+}
+
+.discription {
+    font-size: 1.4rem;
+    color: #ffffffb3;
+    display: flex;
+    align-items: center;
+
+    & .artist {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        margin-right: 4px;
+    }
+}
+
+.controls {
+    display: inline-flex;
+    align-items: center;
+    margin: 20px 0;
+
+    & .icon:first-child {
+        font-size: 56px;
+        color: #1ed760;
+    }
+
+    & .icon:first-child:hover {
+        transform: scale(1.1);
+    }
+
+    & .icon:not(.icon:first-child):hover {
+        color: #fff;
+    }
+
+    & .icon:last-child {
+        font-size: 24px;
+        color: #b3b3b3;
+        margin-left: 20px;
+    }
+    & .icon:nth-child(2) {
+        font-size: 30px;
+        color: #b3b3b3;
+        margin-left: 20px;
+    }
+}
+
+.body {
+    margin-top: 24px;
+    display: flex;
+
+    & .content_artist {
+        flex: 1;
+
+        & .container {
+            padding: 12px;
+            border-radius: 10px;
+            display: inline-flex;
+            width: 400px;
+            & .img_artist {
+                width: 80px;
+                height: 80px;
+                vertical-align: middle;
+                border-radius: 50%;
+                margin-right: 8px;
+            }
+            & .about {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
+        & .container:hover {
+            background-color: #ffffff1a;
+        }
+    }
+
+    & .lyric {
+        flex: 2;
+
+        & h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        & p {
+            font-family: CircularSp;
+            color: #b3b3b3;
+        }
+    }
+}

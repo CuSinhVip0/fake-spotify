@@ -7,6 +7,7 @@ import MyArtist from '~/layouts/Content/component/Library/component/MyArtist';
 import MyAlbum from '~/layouts/Content/component/Library/component/MyAlbum';
 import Categories from '~/components/Categories';
 import Playlist from '~/components/Playlist';
+import Track from '~/components/Track';
 
 export const contenRoutes = [
     { path: '/', component: Home },
@@ -18,4 +19,5 @@ export const contenRoutes = [
     { path: '/library/MyAlbum', component: MyAlbum },
     { path: '/categories', component: Categories },
     { path: '/playlist', component: Playlist },
+    { path: '/track', component: Track },
 ];

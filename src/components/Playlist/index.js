@@ -1,13 +1,13 @@
 import classNames from 'classnames/bind';
 import styles from './Playlist.module.scss';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-
-import Header from '~/components/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlay, faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
+
+import Header from '~/components/Header';
 
 const cx = classNames.bind(styles);
 
@@ -47,7 +47,9 @@ function Playlist() {
                         <div className={cx('col2', 'title')}>
                             <img alt="pic" className={cx('title-image')} src={item.track.album.images[0].url}></img>
                             <div className={cx('title-about')}>
-                                <p className={cx('about-name')}>{item.track.name}</p>
+                                <Link to="/track" state={{ from: item.track.id }} className={cx('about-name')}>
+                                    {item.track.name}
+                                </Link>
                                 <p className={cx('about-artist')}>
                                     {item.track.artists
                                         .map((value) => {
@@ -68,9 +70,7 @@ function Playlist() {
 
     return (
         <React.Fragment>
-            {console.log(dataPlaylist)}
             <Header></Header>
-
             <div className={cx('wrapper')}>
                 <div className={cx('banner')}>
                     <img
