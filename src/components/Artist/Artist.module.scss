@@ -1,0 +1,145 @@
+.wrapper {
+    margin-top: 64px;
+    padding: 0px 32px;
+}
+
+.banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 260px;
+    padding: 20px 0;
+}
+
+.banner-name {
+    font-size: 96px;
+}
+
+.banner-followers {
+    font-family: CircularSp;
+}
+
+.controls {
+    display: inline-flex;
+    align-items: center;
+    margin: 20px 0;
+
+    & .icon:first-child {
+        font-size: 56px;
+        color: #1ed760;
+    }
+
+    & .icon:first-child:hover {
+        transform: scale(1.1);
+    }
+
+    & .icon:not(.icon:first-child):hover {
+        color: #fff;
+    }
+
+    & .icon:last-child {
+        font-size: 24px;
+        color: #b3b3b3;
+        margin-left: 20px;
+    }
+    & .icon:nth-child(2) {
+        font-size: 30px;
+        color: #b3b3b3;
+        margin-left: 20px;
+    }
+}
+
+.topSong {
+    font-size: 20px;
+    font-family: CircularSp;
+
+    & .listSongs {
+        width: 1200px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    & .song {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 0;
+
+        font-size: 16px;
+
+        & .left {
+            display: flex;
+            align-items: center;
+
+            & .col1 {
+                padding: 0 20px;
+            }
+
+            & .col2 {
+                display: flex;
+                align-items: center;
+            }
+
+            & .song-image {
+                width: 40px;
+                height: 40px;
+                margin-right: 20px;
+            }
+        }
+
+        & .right {
+            padding: 0 20px;
+        }
+    }
+
+    & .song:hover {
+        border-radius: 5px;
+        background-color: #ffffff1a;
+    }
+
+    & .btn {
+        outline: none;
+        border: none;
+        padding: 12px 24px;
+        background-color: rgb(15, 15, 15);
+        color: var(--color-blur);
+        font-family: CircularSpBold;
+    }
+
+    & .btn:hover {
+        color: white;
+    }
+}
+
+.album {
+    margin-top: 32px;
+    position: relative;
+    & .album-type {
+        display: flex;
+        margin: 20px 0px;
+
+        & .btn {
+            padding: 8px 12px;
+            border-radius: 20px;
+            border: none;
+            margin-right: 8px;
+            background-color: #181818;
+            color: white;
+        }
+
+        & .btn:hover {
+            background-color: #ffffff1a;
+        }
+    }
+    & .listAlbum {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    & .btn_more {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}

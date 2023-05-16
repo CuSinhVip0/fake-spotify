@@ -23,6 +23,16 @@ body {
     font-size: 1.6rem;
     line-height: 1.5;
     width: 100%;
+
+    //xử lý thanh cuộn
+    overflow: overlay;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: hsla(0, 0%, 100%, 0.3);
 }
 
 ul li {
@@ -59,4 +69,12 @@ a {
 
 .activeNav {
     color: var(--color-white) !important;
+}
+
+.hide {
+    display: none !important;
+}
+.btn_focus {
+    background-color: white !important;
+    color: #000 !important;
 }

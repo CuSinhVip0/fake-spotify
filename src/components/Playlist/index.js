@@ -50,12 +50,23 @@ function Playlist() {
                                 <Link to="/track" state={{ from: item.track.id }} className={cx('about-name')}>
                                     {item.track.name}
                                 </Link>
+
                                 <p className={cx('about-artist')}>
-                                    {item.track.artists
-                                        .map((value) => {
-                                            return value.name;
-                                        })
-                                        .join(', ')}
+                                    {item.track.artists.map((value, index) => {
+                                        return (
+                                            <React.Fragment key={index}>
+                                                {index !== 0 && ', '}
+                                                <Link
+                                                    to="/artist"
+                                                    state={{ from: value.id }}
+                                                    className={cx('artist-name')}
+                                                    key={index}
+                                                >
+                                                    {value.name}
+                                                </Link>
+                                            </React.Fragment>
+                                        );
+                                    })}
                                 </p>
                             </div>
                         </div>

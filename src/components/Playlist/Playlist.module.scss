@@ -126,6 +126,9 @@
                 & .about-artist {
                     font-size: 1.4rem;
                 }
+                & .artist-name:hover {
+                    text-decoration: underline;
+                }
             }
         }
     }

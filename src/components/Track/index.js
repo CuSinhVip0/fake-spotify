@@ -27,16 +27,12 @@ function Track() {
         };
         callLyricApi(from);
         callAPI(from);
-    }, []);
+    }, [from]);
 
     //lấy api lyric
     const callLyricApi = async (id) => {
         const resuilt = await axios.get(`https://spotify-lyric-api.herokuapp.com/?trackid=${id}`);
-
-        console.log(lyric);
-        resuilt.data.lines.map((item) => {
-            lyric.current.innerHTML += `<p>${item.words}</p>`;
-        });
+        resuilt.data.lines.map((item) => (lyric.current.innerHTML += `<p>${item.words}</p>`));
     };
 
     return (
