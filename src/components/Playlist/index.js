@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './Playlist.module.scss';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,8 +12,7 @@ import Header from '~/components/Header';
 const cx = classNames.bind(styles);
 
 function Playlist() {
-    const location = useLocation();
-    const { from } = location.state || {};
+    const { id } = useParams();
     const [dataPlaylist, setdataPlaylist] = useState({});
 
     const convertTime = (duration) => {
@@ -25,7 +24,7 @@ function Playlist() {
 
     useEffect(() => {
         const callApiPlaylist = async () => {
-            const resuilt = await axios.get(`https://api.spotify.com/v1/playlists/${from}`, {
+            const resuilt = await axios.get(`https://api.spotify.com/v1/playlists/${id}`, {
                 headers: {
                     Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
                 },
@@ -34,7 +33,7 @@ function Playlist() {
         };
 
         callApiPlaylist();
-    }, [from]);
+    }, [id]);
 
     const render = (data) => {
         return (
@@ -47,7 +46,7 @@ function Playlist() {
                         <div className={cx('col2', 'title')}>
                             <img alt="pic" className={cx('title-image')} src={item.track.album.images[0].url}></img>
                             <div className={cx('title-about')}>
-                                <Link to="/track" state={{ from: item.track.id }} className={cx('about-name')}>
+                                <Link to={'/track/' + item.track.id} className={cx('about-name')}>
                                     {item.track.name}
                                 </Link>
 
@@ -57,8 +56,7 @@ function Playlist() {
                                             <React.Fragment key={index}>
                                                 {index !== 0 && ', '}
                                                 <Link
-                                                    to="/artist"
-                                                    state={{ from: value.id }}
+                                                    to={'/artist/' + value.id}
                                                     className={cx('artist-name')}
                                                     key={index}
                                                 >
@@ -70,7 +68,9 @@ function Playlist() {
                                 </p>
                             </div>
                         </div>
-                        <div className={cx('col3')}>{item.track.album.name}</div>
+                        <Link to={'/album/' + item.track.album.id} className={cx('col3')}>
+                            {item.track.album.name}
+                        </Link>
                         <div className={cx('col4')}>{item.added_at.substring(0, 10)}</div>
                         <div className={cx('col5')}>{convertTime(item.track.duration_ms)}</div>
                     </div>

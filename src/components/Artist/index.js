@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import React, { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Artist.module.scss';
@@ -13,40 +13,49 @@ import Selection from '~/components/Selection';
 const cx = classNames.bind(styles);
 
 function Artist() {
-    const location = useLocation();
-    const { from } = location.state || {};
+    const { id } = useParams();
     const [dataArtist, setDataArtist] = useState({});
     const [dataArtistTrack, setDataArtistTrack] = useState({});
     const [dataArtistAlbum, setDataArtistAlbum] = useState({});
     const [discography, setDiscography] = useState(null);
+    const [datarelatedArtists, setdataRelatedArtists] = useState(null);
     const list = useRef([]);
     const btn = useRef([]);
     const albumType = useRef([]);
 
     useEffect(() => {
         const callApiArtist = async () => {
-            const result = await axios.get(`https://api.spotify.com/v1/artists/${from}`, {
+            const result = await axios.get(`https://api.spotify.com/v1/artists/${id}`, {
                 headers: { Authorization: 'Bearer ' + sessionStorage.getItem('accessToken') },
             });
             setDataArtist(result.data);
         };
         const callApiArtistTrack = async () => {
-            const result = await axios.get(`https://api.spotify.com/v1/artists/${from}/top-tracks?market=VN`, {
+            const result = await axios.get(`https://api.spotify.com/v1/artists/${id}/top-tracks?market=VN`, {
                 headers: { Authorization: 'Bearer ' + sessionStorage.getItem('accessToken') },
             });
             setDataArtistTrack(result.data.tracks);
         };
         const callApiArtistAlbum = async () => {
-            const result = await axios.get(`https://api.spotify.com/v1/artists/${from}/albums`, {
+            const result = await axios.get(`https://api.spotify.com/v1/artists/${id}/albums`, {
                 headers: { Authorization: 'Bearer ' + sessionStorage.getItem('accessToken') },
             });
 
             setDataArtistAlbum(result.data.items);
         };
+        const callApiRelatedArtists = async () => {
+            const result = await axios.get(`https://api.spotify.com/v1/artists/${id}/related-artists`, {
+                headers: { Authorization: 'Bearer ' + sessionStorage.getItem('accessToken') },
+            });
+
+            setdataRelatedArtists(result.data.artists);
+        };
         callApiArtist();
         callApiArtistTrack();
         callApiArtistAlbum();
-    }, [from]);
+        callApiRelatedArtists();
+        window.scrollTo(0, 0);
+    }, [id]);
 
     const convertTime = (duration) => {
         let resuilt = (duration / 1000 / 60).toFixed(2);
@@ -63,7 +72,13 @@ function Artist() {
             }
         });
         list.current.forEach((item, index) => {
-            index >= 5 && item && item.classList.toggle('hide');
+            if (index >= 5) {
+                if (item && item.classList.contains('hide') === true) {
+                    item && item.classList.remove('hide');
+                } else {
+                    item && item.classList.add('hide');
+                }
+            }
         });
     };
 
@@ -95,7 +110,9 @@ function Artist() {
                                             className={cx('song-image')}
                                             src={value.album.images && value.album.images[0].url}
                                         ></img>
-                                        <p className={cx('song-name')}>{value.name}</p>
+                                        <Link to={'/track/' + value.id} className={cx('song-name')}>
+                                            {value.name}
+                                        </Link>
                                     </div>
                                 </div>
                                 <div className={cx('right')}>{convertTime(value.duration_ms)}</div>
@@ -112,10 +129,54 @@ function Artist() {
                 {data &&
                     data.length > 0 &&
                     data.map((value, index) => {
-                        return type !== null ? (
-                            type === value.album_type && <Selection data={value} key={index}></Selection>
-                        ) : (
-                            <Selection data={value} key={index}></Selection>
+                        return (
+                            index < 8 &&
+                            (type !== null ? (
+                                type === value.album_type && (
+                                    <Selection
+                                        id={value.id}
+                                        type={value.type}
+                                        image={value.images[0].url}
+                                        title={value.name}
+                                        des={[value.release_date.slice(0, 4), value.album_type].join(' • ')}
+                                        key={index}
+                                        isAlbum={true}
+                                    ></Selection>
+                                )
+                            ) : (
+                                <Selection
+                                    id={value.id}
+                                    type={value.type}
+                                    image={value.images[0].url}
+                                    title={value.name}
+                                    des={[value.release_date.slice(0, 4), value.album_type].join(' • ')}
+                                    key={index}
+                                    isAlbum={true}
+                                ></Selection>
+                            ))
+                        );
+                    })}
+            </React.Fragment>
+        );
+    };
+    const renderRelatedArtists = (data) => {
+        return (
+            <React.Fragment>
+                {data &&
+                    data.length > 0 &&
+                    data.map((value, index) => {
+                        return (
+                            index < 8 && (
+                                <Selection
+                                    type={value.type}
+                                    image={value.images[0].url}
+                                    id={value.id}
+                                    title={value.name}
+                                    des={value.type}
+                                    key={index}
+                                    isArtist={true}
+                                ></Selection>
+                            )
                         );
                     })}
             </React.Fragment>
@@ -189,6 +250,12 @@ function Artist() {
                         </button>
                     </div>
                     <div className={cx('listAlbum')}>{renderDiscography(dataArtistAlbum, discography)}</div>
+                    <p className={cx('btn_more')}>Show all</p>
+                </div>
+
+                <div className={cx('relatedArtist')}>
+                    <h2>Fans also like</h2>
+                    <div className={cx('listRelatedArtists')}>{renderRelatedArtists(datarelatedArtists)}</div>
                     <p className={cx('btn_more')}>Show all</p>
                 </div>
             </div>

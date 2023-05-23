@@ -13,6 +13,7 @@
 
 .banner-name {
     font-size: 96px;
+    line-height: 1;
 }
 
 .banner-followers {
@@ -90,6 +91,9 @@
         & .right {
             padding: 0 20px;
         }
+        & .song-name:hover {
+            text-decoration: underline;
+        }
     }
 
     & .song:hover {
@@ -136,10 +140,24 @@
         flex-direction: row;
         width: 100%;
     }
+}
 
-    & .btn_more {
-        position: absolute;
-        top: 0;
-        right: 0;
+.btn_more {
+    position: absolute;
+    top: 0;
+    padding: 8px 0 0;
+    right: 12px;
+    color: var(--color-blur);
+    font-size: 14px;
+}
+.relatedArtist {
+    margin-top: 32px;
+    position: relative;
+    padding: 12px 0;
+
+    & .listRelatedArtists {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
     }
 }

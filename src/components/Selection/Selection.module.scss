@@ -1,8 +1,9 @@
 .wrapper {
-    height: 260px;
+    width: 182px;
+    height: 250px;
     padding: 0 16px;
     background-color: #181818;
-    margin-right: 20px;
+    margin: 0 10px;
     display: flex;
     flex-direction: column;
     border-radius: 5px;
@@ -30,10 +31,12 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-bottom: 8px;
 }
 
 .des {
     font-size: 14px;
+    text-transform: capitalize;
     color: #b3b3b3;
     font-family: CircularSp;
 

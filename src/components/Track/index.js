@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './Track.module.scss';
 import React, { useEffect, useRef, useState } from 'react';
@@ -12,32 +12,29 @@ import Header from '~/components/Header';
 const cx = classNames.bind(styles);
 
 function Track() {
-    const location = useLocation();
-    const { from } = location.state || {};
+    const { id } = useParams();
     const [dataTrack, setDataTrack] = useState({});
     const lyric = useRef();
 
     useEffect(() => {
-        const callAPI = async (id) => {
+        const callAPI = async () => {
             const resuilt = await axios.get(`https://api.spotify.com/v1/tracks/${id}`, {
                 headers: { Authorization: 'Bearer ' + sessionStorage.getItem('accessToken') },
             });
-
             setDataTrack(resuilt.data);
         };
-        callLyricApi(from);
-        callAPI(from);
-    }, [from]);
+        const callLyricApi = async () => {
+            const resuilt = await axios.get(`https://spotify-lyric-api.herokuapp.com/?trackid=${id}&format=lrc`);
+            resuilt.data.lines.map((item) => (lyric.current.innerHTML += `<p>${item.words}</p>`));
+        };
+        callLyricApi();
+        callAPI();
+    }, [id]);
 
     //lấy api lyric
-    const callLyricApi = async (id) => {
-        const resuilt = await axios.get(`https://spotify-lyric-api.herokuapp.com/?trackid=${id}`);
-        resuilt.data.lines.map((item) => (lyric.current.innerHTML += `<p>${item.words}</p>`));
-    };
 
     return (
         <React.Fragment>
-            {console.log(dataTrack)}
             <Header></Header>
             <div className={cx('wrapper')}>
                 <div className={cx('banner')}>

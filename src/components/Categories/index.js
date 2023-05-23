@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './Categories.module.scss';
 import React, { useEffect, useState } from 'react';
@@ -10,21 +10,30 @@ import Header from '~/components/Header';
 const cx = classNames.bind(styles);
 
 function Categories() {
-    const location = useLocation();
-    const { from } = location.state || {};
+    const { id } = useParams();
     const [dataCategories, setdataCategories] = useState();
+    const [infoCategories, setinfoCategories] = useState();
 
     useEffect(() => {
         const callApi = async () => {
-            const resuilt = await axios.get(`${from.href || null}/playlists`, {
+            const resuilt = await axios.get(`https://api.spotify.com/v1/browse/categories/${id}/playlists`, {
                 headers: {
                     Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
                 },
             });
             setdataCategories(resuilt.data.playlists.items);
         };
+        const callApiName = async () => {
+            const resuilt = await axios.get(`https://api.spotify.com/v1/browse/categories/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
+                },
+            });
+            setinfoCategories(resuilt.data);
+        };
         callApi();
-    }, [from.href]);
+        callApiName();
+    }, [id]);
 
     const renderCategories = (data) => {
         return (
@@ -33,7 +42,7 @@ function Categories() {
                     data.length > 0 &&
                     data.map((item, index) => {
                         return (
-                            <Link to="/playlist" state={{ from: item.id }} key={index}>
+                            <Link to={'/playlist/' + item.id} key={index}>
                                 <div className={cx('container')}>
                                     <img className={cx('image')} alt="pic" src={item.images[0].url}></img>
                                     <h5 className={cx('name')}>{item.name}</h5>
@@ -55,7 +64,7 @@ function Categories() {
             <Header></Header>
             <div className={cx('wrapper')}>
                 <div className={cx('title')}>
-                    <h1>{from.name}</h1>
+                    <h1>{infoCategories && infoCategories.name}</h1>
                 </div>
                 <div className={cx('list')}>{renderCategories(dataCategories)}</div>
             </div>

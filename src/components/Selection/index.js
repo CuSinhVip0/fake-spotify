@@ -1,21 +1,19 @@
 import classNames from 'classnames/bind';
 import styles from './Selection.module.scss';
-import React from 'react';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
-const Selection = React.forwardRef((data, ref) => {
+function Selection({ isAlbum = false, isArtist = false, ...props }) {
     return (
-        <div ref={ref} className={cx('wrapper')}>
+        <Link to={'/' + props.type + '/' + props.id} className={cx('wrapper')}>
             <div className={cx('img')}>
-                <img className={cx('image')} src={data.data && data.data.images[0].url} alt="img"></img>
+                <img className={cx('image', isArtist && 'image-artists')} src={props.image} alt="img"></img>
             </div>
-            <p className={cx('title')}>{data.data && data.data.name}</p>
-            <p className={cx('des')}>
-                {data.data && [data.data.release_date.slice(0, 4), data.data.album_type].join(' • ')}
-            </p>
-        </div>
+            <p className={cx('title')}>{props.title}</p>
+            <p className={cx('des')}>{props.des}</p>
+        </Link>
     );
-});
+}
 
 export default Selection;

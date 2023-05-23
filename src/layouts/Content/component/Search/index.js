@@ -18,7 +18,7 @@ function Search() {
                 {data.length > 0 &&
                     data.map((item, index) => {
                         return (
-                            <Link to="/categories" state={{ from: item }} key={index}>
+                            <Link to={'/categories/' + item.id} key={index}>
                                 <div className={cx('content')}>
                                     <img
                                         alt="pic"
@@ -36,7 +36,7 @@ function Search() {
     useEffect(() => {
         const fetchGenres = async () => {
             const resuilt = await axios.get(
-                'https://api.spotify.com/v1/browse/categories?country=VN&offset=0&limit=40',
+                'https://api.spotify.com/v1/browse/categories?country=VN&offset=0&limit=40&locale=vi_VN',
                 {
                     headers: {
                         Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,

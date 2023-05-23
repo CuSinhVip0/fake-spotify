@@ -9,6 +9,7 @@ import Categories from '~/components/Categories';
 import Playlist from '~/components/Playlist';
 import Artist from '~/components/Artist';
 import Track from '~/components/Track';
+import Album from '~/components/Album';
 
 export const contenRoutes = [
     { path: '/', component: Home },
@@ -18,8 +19,9 @@ export const contenRoutes = [
     { path: '/library/MyPodcast', component: MyPodcast },
     { path: '/library/MyArtist', component: MyArtist },
     { path: '/library/MyAlbum', component: MyAlbum },
-    { path: '/categories', component: Categories },
-    { path: '/playlist', component: Playlist },
-    { path: '/track', component: Track },
-    { path: '/artist', component: Artist },
+    { path: '/categories/:id', component: Categories },
+    { path: '/playlist/:id', component: Playlist },
+    { path: '/track/:id', component: Track },
+    { path: '/artist/:id', component: Artist },
+    { path: '/album/:id', component: Album },
 ];

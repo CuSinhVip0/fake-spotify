@@ -1,0 +1,217 @@
+.wrapper {
+    margin-top: 64px;
+    padding: 0 32px;
+}
+
+.banner {
+    display: flex;
+    flex-direction: row;
+    padding: 32px 0;
+    align-items: flex-end;
+
+    & .image {
+        width: 232px;
+        height: 232px;
+        margin-right: 32px;
+    }
+
+    & .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        width: 100%;
+    }
+
+    & .categories {
+        font-size: 1.4rem;
+        text-transform: capitalize;
+    }
+
+    & .name {
+        font-size: 9.6rem;
+        font-weight: normal;
+        letter-spacing: -3px;
+        line-height: 1;
+    }
+    & .description {
+        display: inline-flex;
+        align-items: center;
+
+        & .img-artist {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        & .name-artist {
+            font-size: 14px;
+            margin-right: 4px;
+        }
+
+        & .name-artist:hover {
+            text-decoration: underline;
+        }
+
+        & .total-tracks {
+            font-family: CircularSp;
+            font-size: 14px;
+        }
+        & .time-tracks {
+            font-family: CircularSp;
+            font-size: 14px;
+            color: #b3b3b3;
+        }
+    }
+}
+
+.controls {
+    display: inline-flex;
+    align-items: center;
+    margin: 20px 0;
+
+    & .icon:first-child {
+        font-size: 56px;
+        color: #1ed760;
+    }
+
+    & .icon:first-child:hover {
+        transform: scale(1.1);
+    }
+
+    & .icon:not(.icon:first-child):hover {
+        color: #fff;
+    }
+
+    & .icon:last-child {
+        font-size: 24px;
+        color: #b3b3b3;
+        margin-left: 20px;
+    }
+    & .icon:nth-child(2) {
+        font-size: 30px;
+        color: #b3b3b3;
+        margin-left: 20px;
+    }
+}
+
+.songs {
+    width: 100%;
+    font-family: 'CircularSp';
+
+    & .genre {
+        display: inline-flex;
+        font-size: 1.5rem;
+        color: #b3b3b3;
+        width: 100%;
+        border-bottom: 1px solid #b3b3b3;
+        margin-bottom: 20px;
+    }
+
+    & .col1 {
+        flex-basis: 3%;
+        text-align: center;
+    }
+    & .col2 {
+        flex-basis: 90%;
+    }
+    & .col3 {
+        flex-basis: 7%;
+    }
+    & .song {
+        display: inline-flex;
+        align-items: center;
+        width: 100%;
+        color: #b3b3b3;
+        font-size: 1.5rem;
+        padding: 6px 0;
+
+        & .title {
+            display: inline-flex;
+            align-items: center;
+
+            & .title-image {
+                width: 40px;
+                height: 40px;
+                margin-right: 20px;
+            }
+
+            & .title-about {
+                & .about-name {
+                    font-size: 1.6rem;
+                    color: #fff;
+                }
+
+                & .about-name:hover,
+                .about-artist:hover {
+                    text-decoration: underline;
+                }
+
+                & .artist {
+                    & .about-artist {
+                        display: inline-block;
+                        font-size: 1.4rem;
+                        color: #b3b3b3;
+                    }
+                }
+            }
+        }
+    }
+
+    & .song:hover {
+        background-color: #ffffff1a;
+        border-radius: 10px;
+    }
+
+    & .song:hover .title .title-about .artist .about-artist {
+        color: #fff;
+    }
+}
+
+.copyrights {
+    margin: 32px 0 0;
+    font-family: CircularSp;
+    & .release_date {
+        font-size: 1.4rem;
+        margin-bottom: 6px;
+    }
+
+    & .text {
+        line-height: 1;
+        font-size: 1.1rem;
+        color: #b3b3b3;
+        & .c {
+            background-color: transparent !important;
+            border: 1px solid;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+            text-align: center;
+            display: inline-block;
+            margin: 0 2px 6px 0;
+        }
+    }
+}
+.btn_more {
+    position: absolute;
+    top: 0;
+    padding: 8px 0 0;
+    right: 12px;
+    color: var(--color-blur);
+    font-size: 14px;
+}
+.More_Albums {
+    margin-top: 32px;
+    position: relative;
+    padding: 12px 0;
+    & .title:hover {
+        text-decoration: underline;
+    }
+
+    & .listAlbums {
+        margin-top: 12px;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+}
