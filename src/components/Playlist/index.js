@@ -68,7 +68,7 @@ function Playlist() {
                                 </p>
                             </div>
                         </div>
-                        <Link to={'/album/' + item.track.album.id} className={cx('col3')}>
+                        <Link to={'/album/' + item.track.album.id} className={cx('col3', 'title-album')}>
                             {item.track.album.name}
                         </Link>
                         <div className={cx('col4')}>{item.added_at.substring(0, 10)}</div>

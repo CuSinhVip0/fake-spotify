@@ -1,0 +1,190 @@
+.control {
+    padding: 0 32px;
+    position: fixed;
+    top: 64px;
+    left: 241px;
+    right: 0;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(15, 15, 15);
+
+    & .name-artist {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    & .options {
+        display: flex;
+        align-items: center;
+        & .icon-layout {
+            color: white;
+            background-color: transparent;
+            padding: 8px 8px;
+            border: none;
+            display: flex;
+            align-items: center;
+            font-size: 1.4rem;
+            margin-left: 12px;
+        }
+
+        & .icon-layout:hover {
+            border-radius: 50%;
+            background-color: #ffffff1a;
+            cursor: pointer;
+        }
+
+        & .type-album {
+            color: #b3b3b3;
+            font-family: CircularSp;
+            cursor: pointer;
+        }
+
+        & .type-album:hover {
+            color: white;
+            cursor: pointer;
+        }
+    }
+}
+
+.wrapper {
+    margin-top: 96px;
+    padding: 32px;
+    & .discography {
+        display: block;
+        margin-bottom: 52px;
+    }
+
+    & .banner {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 28px;
+        & .banner_img {
+            display: flex;
+            align-items: center;
+            margin-right: 24px;
+            & .img {
+                width: 135px;
+            }
+        }
+
+        & .banner_title {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+            & .banner_title-name {
+                font-size: 3.2rem;
+            }
+            & .banner_title-name:hover {
+                text-decoration: underline;
+            }
+            & .banner_title-des {
+                font-size: 1.3rem;
+                text-transform: capitalize;
+                font-family: CircularSp;
+                color: #b3b3b3;
+            }
+
+            & .controls {
+                display: inline-flex;
+                align-items: center;
+                margin: 4px 0;
+
+                & .icon:first-child {
+                    font-size: 2.6rem;
+                }
+
+                & .icon:first-child:hover {
+                    transform: scale(1.1);
+                }
+
+                & .icon:not(.icon:first-child):hover {
+                    color: #fff;
+                }
+
+                & .icon:last-child,
+                & .icon:nth-child(2) {
+                    font-size: 2rem;
+                    color: #b3b3b3;
+                    margin-left: 12px;
+                }
+            }
+        }
+    }
+
+    & .songs {
+        width: 100%;
+        font-family: 'CircularSp';
+
+        & .genre {
+            display: inline-flex;
+            font-size: 1.5rem;
+            color: #b3b3b3;
+            width: 100%;
+            border-bottom: 1px solid #5a5a5a;
+            margin-bottom: 20px;
+        }
+
+        & .col1 {
+            flex-basis: 3%;
+            text-align: center;
+        }
+        & .col2 {
+            flex-basis: 90%;
+        }
+        & .col3 {
+            flex-basis: 7%;
+        }
+        & .song {
+            display: inline-flex;
+            align-items: center;
+            width: 100%;
+            color: #b3b3b3;
+            font-size: 1.5rem;
+            padding: 6px 0;
+
+            & .title {
+                display: inline-flex;
+                align-items: center;
+
+                & .title-image {
+                    width: 40px;
+                    height: 40px;
+                    margin-right: 20px;
+                }
+
+                & .title-about {
+                    & .about-name {
+                        font-size: 1.6rem;
+                        color: #fff;
+                    }
+
+                    & .about-name:hover,
+                    .about-artist:hover {
+                        text-decoration: underline;
+                    }
+
+                    & .artist {
+                        & .about-artist {
+                            display: inline-block;
+                            font-size: 1.4rem;
+                            color: #b3b3b3;
+                        }
+                    }
+                }
+            }
+        }
+
+        & .song:hover {
+            background-color: #ffffff1a;
+            border-radius: 10px;
+        }
+
+        & .song:hover .title .title-about .artist .about-artist {
+            color: #fff;
+        }
+    }
+}

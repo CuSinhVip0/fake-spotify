@@ -31,6 +31,7 @@ function Album() {
                 .join(', ');
             document.title = `${dataAlbum.name} - Single by ${singles} | Spotify`;
         }
+        window.scrollTo(0, 0);
     }, [dataAlbum]);
 
     //api albums
@@ -43,7 +44,6 @@ function Album() {
             setidArtist(resuilt.data && resuilt.data.artists[0].id);
         };
         callApiAlbum();
-        window.scrollTo(0, 0);
     }, [id]);
 
     //api artist

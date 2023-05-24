@@ -10,6 +10,7 @@ import Playlist from '~/components/Playlist';
 import Artist from '~/components/Artist';
 import Track from '~/components/Track';
 import Album from '~/components/Album';
+import ShowAll from '~/components/ShowAll';
 
 export const contenRoutes = [
     { path: '/', component: Home },
@@ -24,4 +25,5 @@ export const contenRoutes = [
     { path: '/track/:id', component: Track },
     { path: '/artist/:id', component: Artist },
     { path: '/album/:id', component: Album },
+    { path: '/artist/:id/discography', component: ShowAll },
 ];

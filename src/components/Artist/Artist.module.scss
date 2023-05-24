@@ -142,14 +142,6 @@
     }
 }
 
-.btn_more {
-    position: absolute;
-    top: 0;
-    padding: 8px 0 0;
-    right: 12px;
-    color: var(--color-blur);
-    font-size: 14px;
-}
 .relatedArtist {
     margin-top: 32px;
     position: relative;
@@ -160,4 +152,17 @@
         flex-direction: row;
         width: 100%;
     }
+}
+
+.btn_more {
+    position: absolute;
+    top: 0;
+    padding: 8px 0 0;
+    right: 12px;
+    color: var(--color-blur);
+    font-size: 14px;
+}
+
+.btn_more:hover {
+    text-decoration: underline;
 }

@@ -131,6 +131,9 @@
                 }
             }
         }
+        & .title-album:hover {
+            text-decoration: underline;
+        }
     }
 
     & .song:hover {

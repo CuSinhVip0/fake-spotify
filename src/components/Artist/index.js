@@ -250,7 +250,9 @@ function Artist() {
                         </button>
                     </div>
                     <div className={cx('listAlbum')}>{renderDiscography(dataArtistAlbum, discography)}</div>
-                    <p className={cx('btn_more')}>Show all</p>
+                    <Link to={'/artist/' + id + '/discography'} className={cx('btn_more')}>
+                        Show all
+                    </Link>
                 </div>
 
                 <div className={cx('relatedArtist')}>
