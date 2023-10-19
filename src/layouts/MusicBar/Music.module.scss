@@ -1,0 +1,106 @@
+.wrapper {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 80px;
+    padding: 8px 12px;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+}
+
+.left {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    & .left-image {
+        width: 56px;
+        height: 56px;
+        margin: 0px 24px;
+    }
+    & .left-title {
+        font-family: CircularSp;
+    }
+    & .left-title_name {
+        font-size: 14px;
+    }
+    & .left-title_artists {
+        font-size: 12px;
+        color: #b3b3b3;
+    }
+    & .left-icon {
+        margin-left: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.middle {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    & .middle-top {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        & .middle-top_icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0px 16px;
+
+            background-color: transparent;
+            color: #b3b3b3;
+            border: none;
+        }
+        & .border-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: white;
+            color: #000;
+        }
+    }
+    & .middle-bot {
+        margin-top: 12px;
+        padding: 0px 32px;
+        & .middle-bot-line {
+            height: 3px;
+            background-color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    }
+}
+
+.right {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+
+    & .right-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0px 8px;
+
+        background-color: transparent;
+        color: #b3b3b3;
+        border: none;
+    }
+    & .right-line {
+        height: 3px;
+        background-color: white;
+        border: none;
+        border-radius: 5px;
+        width: 100px;
+    }
+}
+.artist-name:hover {
+    text-decoration: underline;
+}

@@ -204,6 +204,10 @@
     margin-top: 32px;
     position: relative;
     padding: 12px 0;
+
+    & .title {
+        font-size: 2.4rem;
+    }
     & .title:hover {
         text-decoration: underline;
     }

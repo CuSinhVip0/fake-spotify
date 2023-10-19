@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './Track.module.scss';
 import React, { useEffect, useRef, useState } from 'react';
@@ -12,9 +12,17 @@ import Header from '~/components/Header';
 const cx = classNames.bind(styles);
 
 function Track() {
+    const navigate = useNavigate();
     const { id } = useParams();
     const [dataTrack, setDataTrack] = useState({});
     const lyric = useRef();
+    useEffect(() => {
+        if (dataTrack)
+            document.title = `${dataTrack.name} - song and lyrics by ${
+                dataTrack.artists && dataTrack.artists[0].name
+            } | Spotify`;
+        window.scrollTo(0, 0);
+    }, [dataTrack]);
 
     useEffect(() => {
         const callAPI = async () => {
@@ -35,7 +43,7 @@ function Track() {
 
     return (
         <React.Fragment>
-            <Header></Header>
+            <Header navigate={navigate}></Header>
             <div className={cx('wrapper')}>
                 <div className={cx('banner')}>
                     <img
@@ -64,7 +72,13 @@ function Track() {
                     </div>
                 </div>
                 <div className={cx('controls')}>
-                    <FontAwesomeIcon icon={faCirclePlay} className={cx('icon')}></FontAwesomeIcon>
+                    <FontAwesomeIcon
+                        icon={faCirclePlay}
+                        className={cx('icon')}
+                        onClick={() => {
+                            localStorage.setItem('idTrack', dataTrack.id || null);
+                        }}
+                    ></FontAwesomeIcon>
                     <FontAwesomeIcon icon={faHeart} className={cx('icon')}></FontAwesomeIcon>
                     <FontAwesomeIcon icon={faEllipsis} className={cx('icon')}></FontAwesomeIcon>
                 </div>

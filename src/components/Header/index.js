@@ -7,7 +7,14 @@ import { useEffect } from 'react';
 
 const cx = classNames.bind(styles);
 
-function Header({ isSearchBar = false, isLibraryBar = false }) {
+function Header({ isSearchBar = false, isLibraryBar = false, isHome = false, navigate = null }) {
+    const handleGoBack = () => {
+        navigate(-1);
+    };
+    const handleGoForward = () => {
+        navigate(1);
+    };
+
     useEffect(() => {
         const clientId = '616f7042b2de43f18af7a77511c94cb5';
         const params = new URLSearchParams(window.location.search);
@@ -79,16 +86,15 @@ function Header({ isSearchBar = false, isLibraryBar = false }) {
 
         sessionStorage.getItem('accessToken') || token();
     }, []);
-
     return (
         <div className={cx('wrapper')}>
             <div className={cx('controls')}>
-                <span>
+                <button onClick={handleGoBack}>
                     <FontAwesomeIcon icon={faChevronLeft} />
-                </span>
-                <span>
+                </button>
+                <button onClick={handleGoForward}>
                     <FontAwesomeIcon icon={faChevronRight} />
-                </span>
+                </button>
                 {isSearchBar && (
                     <div className={cx('container_input')}>
                         <input

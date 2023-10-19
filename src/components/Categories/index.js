@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './Categories.module.scss';
 import React, { useEffect, useState } from 'react';
@@ -10,9 +10,15 @@ import Header from '~/components/Header';
 const cx = classNames.bind(styles);
 
 function Categories() {
+    const navigate = useNavigate();
     const { id } = useParams();
     const [dataCategories, setdataCategories] = useState();
     const [infoCategories, setinfoCategories] = useState();
+
+    useEffect(() => {
+        document.title = `Spotify - ${infoCategories && infoCategories.name}`;
+        window.scrollTo(0, 0);
+    }, [infoCategories]);
 
     useEffect(() => {
         const callApi = async () => {
@@ -41,6 +47,8 @@ function Categories() {
                 {data &&
                     data.length > 0 &&
                     data.map((item, index) => {
+                        if (item == null) return null;
+
                         return (
                             <Link to={'/playlist/' + item.id} key={index}>
                                 <div className={cx('container')}>
@@ -61,7 +69,7 @@ function Categories() {
 
     return (
         <React.Fragment>
-            <Header></Header>
+            <Header navigate={navigate}></Header>
             <div className={cx('wrapper')}>
                 <div className={cx('title')}>
                     <h1>{infoCategories && infoCategories.name}</h1>

@@ -15,7 +15,7 @@
 .controls {
     display: flex;
     align-items: center;
-    & span {
+    & button {
         background-color: rgba(0, 0, 0, 0.741);
         display: inline-flex;
         justify-content: center;
@@ -23,15 +23,17 @@
         width: 30px;
         height: 30px;
         border-radius: 50%;
+        border: none;
+        color: white;
+        cursor: pointer;
     }
 
-    & span + span {
+    & button + button {
         margin-left: 16px;
     }
     & svg {
         height: 2rem;
         width: 2rem;
-        color: var(--color-blur);
     }
 
     & .container_input {

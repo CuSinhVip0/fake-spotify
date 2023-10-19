@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Artist.module.scss';
@@ -13,6 +13,7 @@ import Selection from '~/components/Selection';
 const cx = classNames.bind(styles);
 
 function Artist() {
+    const navigate = useNavigate();
     const { id } = useParams();
     const [dataArtist, setDataArtist] = useState({});
     const [dataArtistTrack, setDataArtistTrack] = useState({});
@@ -22,6 +23,11 @@ function Artist() {
     const list = useRef([]);
     const btn = useRef([]);
     const albumType = useRef([]);
+
+    useEffect(() => {
+        if (dataArtist) document.title = `${dataArtist.name} | Spotify`;
+        window.scrollTo(0, 0);
+    }, [dataArtist]);
 
     useEffect(() => {
         const callApiArtist = async () => {
@@ -185,7 +191,7 @@ function Artist() {
 
     return (
         <React.Fragment>
-            <Header></Header>
+            <Header navigate={navigate}></Header>
             <div className={cx('wrapper')}>
                 <div className={cx('banner')}>
                     <h1 className={cx('banner-name')}>{dataArtist.name}</h1>
@@ -258,7 +264,9 @@ function Artist() {
                 <div className={cx('relatedArtist')}>
                     <h2>Fans also like</h2>
                     <div className={cx('listRelatedArtists')}>{renderRelatedArtists(datarelatedArtists)}</div>
-                    <p className={cx('btn_more')}>Show all</p>
+                    <Link to={'/artist/' + id + '/related'} className={cx('btn_more')}>
+                        Show all
+                    </Link>
                 </div>
             </div>
         </React.Fragment>

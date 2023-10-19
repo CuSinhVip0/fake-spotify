@@ -1,17 +1,20 @@
 import classNames from 'classnames/bind';
 import styles from './Playlist.module.scss';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlay, faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
-
+import { useDispatch } from 'react-redux';
 import Header from '~/components/Header';
+import { idSong } from '~/Actions';
 
 const cx = classNames.bind(styles);
 
 function Playlist() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { id } = useParams();
     const [dataPlaylist, setdataPlaylist] = useState({});
 
@@ -21,6 +24,11 @@ function Playlist() {
 
         return `${Math.floor(resuilt)}:${numArr[1]}`;
     };
+
+    useEffect(() => {
+        if (dataPlaylist.name) document.title = `${dataPlaylist.name} | Spotify Playlist`;
+        window.scrollTo(0, 0);
+    }, [dataPlaylist]);
 
     useEffect(() => {
         const callApiPlaylist = async () => {
@@ -41,7 +49,7 @@ function Playlist() {
             data.items.length > 0 &&
             data.items.map((item, index) => {
                 return (
-                    <div className={cx('song')} key={index}>
+                    <div className={cx('song')} key={index} onClick={() => dispatch(idSong(item.track.id || 'abc'))}>
                         <div className={cx('col1')}>{index + 1}</div>
                         <div className={cx('col2', 'title')}>
                             <img alt="pic" className={cx('title-image')} src={item.track.album.images[0].url}></img>
@@ -81,7 +89,7 @@ function Playlist() {
 
     return (
         <React.Fragment>
-            <Header></Header>
+            <Header navigate={navigate}></Header>
             <div className={cx('wrapper')}>
                 <div className={cx('banner')}>
                     <img

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames/bind';
 import styles from './ShowAll.module.scss';
@@ -11,6 +11,7 @@ import Header from '~/components/Header';
 const cx = classNames.bind(styles);
 
 function ShowAll() {
+    const navigate = useNavigate();
     const { id } = useParams();
     const control = useRef();
     const [dataArtist, setDataArtist] = useState([]);
@@ -146,7 +147,7 @@ function ShowAll() {
 
     return (
         <React.Fragment>
-            <Header></Header>
+            <Header navigate={navigate}></Header>
             <div className={cx('control')} ref={control}>
                 <div className={cx('name-artist')}>{dataArtist.name}</div>
                 <div className={cx('options')}>

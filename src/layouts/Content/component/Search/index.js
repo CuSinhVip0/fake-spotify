@@ -3,14 +3,20 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Header from '~/components/Header';
 
 const cx = classNames.bind(styles);
 
 function Search() {
+    const navigate = useNavigate();
     const [genres, setGenres] = useState({});
+
+    useEffect(() => {
+        document.title = 'Spotify - Search';
+        window.scrollTo(0, 0);
+    }, []);
 
     const renderGenres = (data) => {
         return (
@@ -50,7 +56,7 @@ function Search() {
 
     return (
         <React.Fragment>
-            <Header isSearchBar={true}></Header>
+            <Header isSearchBar={true} navigate={navigate}></Header>
 
             <div className={cx('wrapper')}>
                 <p className={cx('title')}>Duyệt tìm tất cả</p>

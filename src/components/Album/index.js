@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import classNames from 'classnames/bind';
@@ -14,6 +14,7 @@ import Selection from '~/components/Selection';
 const cx = classNames.bind(styles);
 
 function Album() {
+    const navigate = useNavigate();
     const { id } = useParams();
     const [dataAlbum, setDataAlbum] = useState([]);
     const [idArtist, setidArtist] = useState(null);
@@ -130,7 +131,10 @@ function Album() {
     const renderRelatedArtists = (data) => {
         return (
             <div className={cx('More_Albums')}>
-                <h2 className={cx('title')}>{`More by ${dataArtist.name}`}</h2>
+                <Link
+                    to={'/artist/' + dataArtist.id + '/discography'}
+                    className={cx('title')}
+                >{`More by ${dataArtist.name}`}</Link>
                 <div className={cx('listAlbums')}>
                     <React.Fragment>
                         {data &&
@@ -152,14 +156,16 @@ function Album() {
                             })}
                     </React.Fragment>
                 </div>
-                <p className={cx('btn_more')}>Show all</p>
+                <Link to={'/artist/' + dataArtist.id + '/discography'} className={cx('btn_more')}>
+                    Show all
+                </Link>
             </div>
         );
     };
 
     return (
         <React.Fragment>
-            <Header></Header>
+            <Header navigate={navigate}></Header>
             <div className={cx('wrapper')}>
                 <div className={cx('banner')}>
                     <img

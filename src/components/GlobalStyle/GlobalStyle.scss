@@ -49,6 +49,11 @@ a {
     display: flex;
 }
 
+.btn_invalid {
+    color: var(--color-blur) !important;
+    cursor: no-drop !important;
+}
+
 //font format
 @font-face {
     font-family: CircularSpBold;
